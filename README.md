@@ -18,7 +18,14 @@ latest release of this repo, so a rotation only needs a new release, not a new e
 `validVersion` lists the theme parser versions the modules work with. An extension whose
 `PARSER_VERSION` is not listed keeps its cached or bundled module.
 
+## Module ABI
+
+The theme runs the modules as-is, so every module must expose the layout of parser version 1,
+whatever the site's own build uses: memory `b`, ctors `c`, malloc `i`, free `e`,
+signAttestation `l`, signManifest `k`, ecdhInit `f`, kdfRot `j`, and no import but `a.a`
+(resize heap, stubbed).
+
 ## Updating a site
 
-1. Replace `sites/<id>.wasm` (see the theme's `IMPLEMENT.md`) and commit.
+1. Replace `sites/<id>.wasm` and commit.
 2. `./release.sh`
